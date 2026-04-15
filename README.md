@@ -27,15 +27,15 @@ Update this README every week.
 
 Write 3 to 5 short lines about what you have already done.
 
-- [cite_start]**Milestone 1 completado:** Repositorio aceptado en GitHub Classroom, clonado localmente y README inicial configurado [cite: 32-43].
-- [cite_start]**Milestone 2 completado:** Creado el script `api/blockchain_client.py` con la librería `requests` para obtener e imprimir en consola los datos reales del último bloque (altura, hash, dificultad, nonce, transacciones) [cite: 46-55].
-- [cite_start]**Milestone 3 completado:** Estructura de plantillas mantenida, código integrado con Streamlit (`app.py`) y subido a GitHub mediante commit y push [cite: 60-68].
+- **Milestone 1 completado:** Repositorio aceptado en GitHub Classroom, clonado localmente y README inicial configurado.
+- **Milestone 2 completado:** Creado el script `api/blockchain_client.py` con la librería `requests` para obtener e imprimir en consola los datos reales del último bloque (altura, hash, dificultad, nonce, transacciones).
+- **Milestone 3 completado:** Estructura de plantillas mantenida, código integrado con Streamlit (`app.py`) y subido a GitHub mediante commit y push.
 
 ## Next Step
 
 Write the next small step you will do before the next class.
 
-- [cite_start]Iniciar el desarrollo visual y lógico del módulo M1 (Proof of Work Monitor), calculando el umbral a partir del campo 'bits' [cite: 82-87].
+- Iniciar el desarrollo visual y lógico del módulo M1 (Proof of Work Monitor), calculando el umbral a partir del campo 'bits'.
 
 ## Main Problem or Blocker
 
