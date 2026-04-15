@@ -8,17 +8,15 @@ Update this README every week.
 | Field | Value |
 |---|---|
 | Student Name | Juan Hevia Losa |
-| GitHub Username | juanhevia |
-| Project Title | Blockchain Dashboard |
-| Chosen AI Approach | |
+| GitHub Username | @juanhevia |
+| Project Title | Blockchain Dashboard Project |
+| Chosen AI Approach | [Elige una: Predictor de dificultad / Detector de anomalías / Estimador de comisiones] |
 
 ## Module Tracking
 
-Use one of these values: `Not started`, `In progress`, `Done`
-
 | Module | What it should include | Status |
 |---|---|---|
-| M1 | Proof of Work Monitor | Not started |
+| M1 | Proof of Work Monitor | In progress |
 | M2 | Block Header Analyzer | Not started |
 | M3 | Difficulty History | Not started |
 | M4 | AI Component | Not started |
@@ -27,42 +25,24 @@ Use one of these values: `Not started`, `In progress`, `Done`
 
 Write 3 to 5 short lines about what you have already done.
 
-- 
-- 
-- 
+- Aceptado el repositorio de GitHub Classroom y clonado en mi equipo local.
+- Configurado el archivo README.md inicial con la información requerida del estudiante.
+- Explorando la documentación de la API de Blockstream para preparar la primera llamada.
 
 ## Next Step
 
 Write the next small step you will do before the next class.
 
-- 
+- Escribir el script en Python (blockchain_client.py) usando la librería `requests` para obtener los datos reales del último bloque de Bitcoin.
 
 ## Main Problem or Blocker
 
 Write here if you are stuck with something.
 
-- 
+- Ninguno por el momento. (O si tienes alguno: Entendiendo qué endpoint de la API necesito usar exactamente).
 
 ## How to Run
 
 ```bash
 pip install -r requirements.txt
 streamlit run app.py
-```
-
-## Project Structure
-
-```text
-template-blockchain-dashboard/
-|-- README.md
-|-- requirements.txt
-|-- .gitignore
-|-- app.py
-|-- api/
-|   `-- blockchain_client.py
-`-- modules/
-    |-- m1_pow_monitor.py
-    |-- m2_block_header.py
-    |-- m3_difficulty_history.py
-    `-- m4_ai_component.py
-```
