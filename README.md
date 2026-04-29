@@ -12,14 +12,12 @@ Update this README every week.
 | Project Title | Blockchain Dashboard Project |
 | Chosen AI Approach | [Elige una: Predictor de dificultad / Detector de anomalÃ­as / Estimador de comisiones] |
 
-## Module Tracking
-
-| Module | What it should include | Status |
-|---|---|---|
-| M1 | Proof of Work Monitor | In progress |
-| M2 | Block Header Analyzer | Not started |
-| M3 | Difficulty History | Not started |
-| M4 | AI Component | Not started |
+| Module | Status |
+|---|---|
+| M1: PoW Monitor | Completed |
+| M2: Block Header | Completed |
+| M3: Difficulty | Completed |
+| M4: AI Integration | Not started |
 
 ## Current Progress
 
