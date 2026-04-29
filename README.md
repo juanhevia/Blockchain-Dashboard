@@ -27,21 +27,21 @@ Update this README every week.
 
 Write 3 to 5 short lines about what you have already done.
 
-- **Milestone 1 completado:** Repositorio aceptado en GitHub Classroom, clonado localmente y README inicial configurado.
-- **Milestone 2 completado:** Creado el script `api/blockchain_client.py` con la librerÃ­a `requests` para obtener e imprimir en consola los datos reales del Ãºltimo bloque (altura, hash, dificultad, nonce, transacciones).
-- **Milestone 3 completado:** Estructura de plantillas mantenida, cÃ³digo integrado con Streamlit (`app.py`) y subido a GitHub mediante commit y push.
+- **M1 completado:** Implementado el monitor Proof of Work con cálculo de dificultad, hash rate y gráfica de distribución de tiempos (usando Mempool.space para evitar bloqueos de API).
+- **M2 completado:** Analizador de cabeceras funcionando con verificación local del PoW mediante doble SHA-256 y correcta gestión del formato little-endian.
+- **M3 completado:** Histórico de dificultad graficado con detección exacta de los eventos de ajuste (cada 2016 bloques) y cálculo de ratios de tiempo real vs objetivo.
 
 ## Next Step
 
 Write the next small step you will do before the next class.
 
-- Iniciar el desarrollo visual y lÃ³gico del mÃ³dulo M1 (Proof of Work Monitor), calculando el umbral a partir del campo 'bits'.
+- Iniciar el desarrollo del Módulo M4 (AI Integration), preparando los datos para entrenar el modelo de Machine Learning elegido.
 
 ## Main Problem or Blocker
 
 Write here if you are stuck with something.
 
-- Ninguno por ahora. Entorno de desarrollo local funcionando correctamente.
+- Tuve problemas con bloqueos anti-bots (Cloudflare) al usar la API de blockchain.info para el M1 y M3, pero lo he resuelto integrando la API de mempool.space y api.blockchain.info.
 
 ## Next Step
 
