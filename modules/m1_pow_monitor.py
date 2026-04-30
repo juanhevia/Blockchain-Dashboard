@@ -24,14 +24,16 @@ def render() -> None:
                 # Convertimos el entero a hexadecimal y quitamos el '0x' inicial
                 bits_hex = hex(bits_int)[2:] 
                 
-                # La estructura del campo bits es: 2 primeros caracteres = exponente, 6 siguientes = coeficiente
+                # THEORY COMMENT 1: The 'bits' field is a compact representation (1 byte exponent, 3 bytes coefficient) of the Target.
+                # The Target is the threshold that a valid block hash must not exceed.
                 exponent = int(bits_hex[:2], 16)
                 coefficient = int(bits_hex[2:], 16)
                 
                 # Cálculo matemático del Target
                 target = coefficient * (256 ** (exponent - 3))
                 
-                # Representación en binario (256 bits) para visualizar el espacio SHA-256
+                # THEORY COMMENT 2: For a hash to be smaller than the target, it mathematically requires a certain number of leading zeros.
+                # We calculate these leading zeros in the 256-bit binary representation to visually show the PoW difficulty.
                 target_bin = f"{target:0256b}"
                 leading_zeros = 256 - len(target_bin.lstrip('0'))
                 
@@ -57,37 +59,42 @@ def render() -> None:
                 col3.metric("Dificultad de Minería", f"{difficulty:,.2f}")
                 col4.metric("Hash Rate Estimado", f"{exahashes:,.2f} EH/s")
 
+             
                 # --- PARTE 3: HISTOGRAMA DE TIEMPO ENTRE BLOQUES ---
                 st.subheader("3. Distribución del tiempo entre bloques")
                 
-                # Usamos un endpoint extra para descargar los últimos N bloques del día de forma masiva
-                blocks_today = requests.get("https://blockchain.info/blocks?format=json").json()
+                # Solución profesional: Usamos mempool.space para evitar los bloqueos de Cloudflare
+                headers = {'User-Agent': 'Mozilla/5.0'}
+                blocks_response = requests.get("https://mempool.space/api/v1/blocks", headers=headers).json()
                 
-                # Extraemos los tiempos (timestamps UNIX) y los ordenamos cronológicamente
-                times = sorted([b.get('time') for b in blocks_today])
+                # Extraemos los tiempos y los ordenamos cronológicamente (en esta API el campo es 'timestamp')
+                times = sorted([b.get('timestamp') for b in blocks_response if isinstance(b, dict) and 'timestamp' in b])
                 
-                # Calculamos la diferencia de tiempo entre cada bloque y su anterior (en segundos y minutos)
-                diffs_seconds = [times[i] - times[i-1] for i in range(1, len(times))]
-                diffs_minutes = [d / 60 for d in diffs_seconds]
-                
-                # Preparamos los datos para graficar con Plotly
-                df_times = pd.DataFrame({"Minutos": diffs_minutes})
-                
-                # Generamos el histograma de distribución
-                fig = px.histogram(
-                    df_times, 
-                    x="Minutos", 
-                    nbins=30, 
-                    title="Tiempo entre los últimos bloques (Distribución Estadística)",
-                    labels={"Minutos": "Minutos entre bloques"},
-                    color_discrete_sequence=['#F7931A'] # Color Bitcoin
-                )
-                # Añadimos la línea de los 10 minutos objetivo
-                fig.add_vline(x=10, line_dash="dash", line_color="white", annotation_text="Target: 10 min")
-                
-                st.plotly_chart(fig, use_container_width=True)
-                
-                st.info("💡 Teoría: Como se aprecia en la gráfica, el tiempo de llegada de los bloques sigue un proceso de Poisson, formando una distribución exponencial alrededor del objetivo de 10 minutos.")
+                if len(times) > 1:
+                    # Calculamos la diferencia de tiempo entre cada bloque y su anterior (en minutos)
+                    diffs_seconds = [times[i] - times[i-1] for i in range(1, len(times))]
+                    diffs_minutes = [d / 60 for d in diffs_seconds]
+                    
+                    # Preparamos los datos para graficar con Plotly
+                    df_times = pd.DataFrame({"Minutos": diffs_minutes})
+                    
+                    # Generamos el histograma de distribución
+                    fig = px.histogram(
+                        df_times, 
+                        x="Minutos", 
+                        nbins=15, 
+                        title="Tiempo entre los últimos bloques (Distribución Estadística)",
+                        labels={"Minutos": "Minutos entre bloques"},
+                        color_discrete_sequence=['#F7931A'] # Color Bitcoin
+                    )
+                    # Añadimos la línea de los 10 minutos objetivo
+                    fig.add_vline(x=10, line_dash="dash", line_color="white", annotation_text="Target: 10 min")
+                    
+                    st.plotly_chart(fig, use_container_width=True)
+                    
+                    st.info("💡 Teoría: Como se aprecia en la gráfica, el tiempo de llegada de los bloques sigue un proceso de Poisson, formando una distribución exponencial alrededor del objetivo de 10 minutos.")
+                else:
+                    st.warning("No se pudieron descargar suficientes bloques hoy para generar la gráfica. Inténtalo de nuevo en unos minutos.")
 
             except Exception as e:
                 st.error(f"Error al calcular los datos del M1: {e}")
