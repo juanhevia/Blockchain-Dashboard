@@ -10,7 +10,9 @@ Update this README every week.
 | Student Name | Juan Hevia Losa |
 | GitHub Username | @juanhevia |
 | Project Title | Blockchain Dashboard Project |
-| Chosen AI Approach | [Elige una: Predictor de dificultad / Detector de anomalÃ­as / Estimador de comisiones] |
+| Chosen AI Approach | Difficulty Predictor (Time Series) |
+
+## Module Tracking
 
 | Module | Status |
 |---|---|
@@ -21,40 +23,19 @@ Update this README every week.
 
 ## Current Progress
 
-## Current Progress
-
-Write 3 to 5 short lines about what you have already done.
-
-- **M1 completado:** Implementado el monitor Proof of Work con cálculo de dificultad, hash rate y gráfica de distribución de tiempos (usando Mempool.space para evitar bloqueos de API).
-- **M2 completado:** Analizador de cabeceras funcionando con verificación local del PoW mediante doble SHA-256 y correcta gestión del formato little-endian.
-- **M3 completado:** Histórico de dificultad graficado con detección exacta de los eventos de ajuste (cada 2016 bloques) y cálculo de ratios de tiempo real vs objetivo.
+- Checkpoint reached: Repository structure maintained and M1, M2, and M3 modules fully integrated into the Streamlit dashboard.
+- M1 successfully connects API output to theory (calculated Target and leading zeros from the 'bits' field).
+- Resolved initial API rate-limiting issues by switching to Mempool.space.
 
 ## Next Step
 
-Write the next small step you will do before the next class.
-
-- Iniciar el desarrollo del Módulo M4 (AI Integration), preparando los datos para entrenar el modelo de Machine Learning elegido.
+- Start developing M4 (AI Integration) and prepare the historical dataset for the Machine Learning model.
 
 ## Main Problem or Blocker
 
-Write here if you are stuck with something.
-
-- Tuve problemas con bloqueos anti-bots (Cloudflare) al usar la API de blockchain.info para el M1 y M3, pero lo he resuelto integrando la API de mempool.space y api.blockchain.info.
-
-## Next Step
-
-Write the next small step you will do before the next class.
-
-- Escribir el script en Python (blockchain_client.py) usando la librerÃ­a `requests` para obtener los datos reales del Ãºltimo bloque de Bitcoin.
-
-## Main Problem or Blocker
-
-Write here if you are stuck with something.
-
-- Ninguno por el momento. (O si tienes alguno: Entendiendo quÃ© endpoint de la API necesito usar exactamente).
+- No active blockers at the moment. API connection is stable.
 
 ## How to Run
-
 ```bash
 pip install -r requirements.txt
 streamlit run app.py
