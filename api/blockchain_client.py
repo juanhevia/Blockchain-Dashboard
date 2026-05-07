@@ -24,10 +24,16 @@ def get_block(block_hash: str) -> dict:
 
 def get_difficulty_history(n_points: int = 100) -> list[dict]:
     """Return the last *n_points* difficulty values as a list of dicts."""
+<<<<<<< HEAD
     # Usamos api.blockchain.info para evitar bloqueos HTML
     response = requests.get(
         "https://api.blockchain.info/charts/difficulty",
         params={"timespan": "1year", "format": "json"},
+=======
+    response = requests.get(
+        f"{BASE_URL}/charts/difficulty",
+        params={"timespan": "1year", "format": "json", "sampled": "true"},
+>>>>>>> f3b4319fb47d612cb695c57d62b0a384126b27bb
         timeout=10,
     )
     response.raise_for_status()

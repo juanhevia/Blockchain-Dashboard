@@ -97,4 +97,8 @@ def render() -> None:
                     st.warning("No se pudieron descargar suficientes bloques hoy para generar la gráfica. Inténtalo de nuevo en unos minutos.")
 
             except Exception as e:
+<<<<<<< HEAD
                 st.error(f"Error al calcular los datos del M1: {e}")
+=======
+                st.error(f"Error al calcular los datos del M1: {e}")
+>>>>>>> f3b4319fb47d612cb695c57d62b0a384126b27bb

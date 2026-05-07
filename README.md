@@ -10,39 +10,50 @@ Update this README every week.
 | Student Name | Juan Hevia Losa |
 | GitHub Username | @juanhevia |
 | Project Title | Blockchain Dashboard Project |
-| Chosen AI Approach | [Elige una: Predictor de dificultad / Detector de anomalías / Estimador de comisiones] |
+| Chosen AI Approach | Difficulty Predictor (Time Series) |
 
 ## Module Tracking
 
-| Module | What it should include | Status |
-|---|---|---|
-| M1 | Proof of Work Monitor | In progress |
-| M2 | Block Header Analyzer | Not started |
-| M3 | Difficulty History | Not started |
-| M4 | AI Component | Not started |
+| Module | Status |
+|---|---|
+| M1: PoW Monitor | Completed |
+| M2: Block Header | Completed |
+| M3: Difficulty | Completed |
+| M4: AI Integration | Not started |
 
 ## Current Progress
 
-Write 3 to 5 short lines about what you have already done.
-
-- Aceptado el repositorio de GitHub Classroom y clonado en mi equipo local.
-- Configurado el archivo README.md inicial con la información requerida del estudiante.
-- Explorando la documentación de la API de Blockstream para preparar la primera llamada.
+- Checkpoint reached: Repository structure maintained and M1, M2, and M3 modules fully integrated into the Streamlit dashboard.
+- M1 successfully connects API output to theory (calculated Target and leading zeros from the 'bits' field).
+- Resolved initial API rate-limiting issues by switching to Mempool.space.
 
 ## Next Step
 
-Write the next small step you will do before the next class.
-
-- Escribir el script en Python (blockchain_client.py) usando la librería `requests` para obtener los datos reales del último bloque de Bitcoin.
+- Start developing M4 (AI Integration) and prepare the historical dataset for the Machine Learning model.
 
 ## Main Problem or Blocker
 
-Write here if you are stuck with something.
-
-- Ninguno por el momento. (O si tienes alguno: Entendiendo qué endpoint de la API necesito usar exactamente).
+- No active blockers at the moment. API connection is stable.
 
 ## How to Run
-
 ```bash
 pip install -r requirements.txt
 streamlit run app.py
+
+<!-- student-repo-auditor:teacher-feedback:start -->
+## Teacher Feedback
+
+### Kick-off Review
+
+Review time: 2026-04-29 20:44 CEST
+Status: Amber
+
+Strength:
+- I can see the dashboard structure integrating the checkpoint modules.
+
+Improve now:
+- The README should now reflect the checkpoint more explicitly, including progress, blockers, and updated module status.
+
+Next step:
+- Update the README so progress, blockers, module status, and next step match the checkpoint format exactly.
+<!-- student-repo-auditor:teacher-feedback:end -->
