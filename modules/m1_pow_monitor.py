@@ -24,14 +24,16 @@ def render() -> None:
                 # Convertimos el entero a hexadecimal y quitamos el '0x' inicial
                 bits_hex = hex(bits_int)[2:] 
                 
-                # La estructura del campo bits es: 2 primeros caracteres = exponente, 6 siguientes = coeficiente
+                # THEORY COMMENT 1: The 'bits' field is a compact representation (1 byte exponent, 3 bytes coefficient) of the Target.
+                # The Target is the threshold that a valid block hash must not exceed.
                 exponent = int(bits_hex[:2], 16)
                 coefficient = int(bits_hex[2:], 16)
                 
                 # Cálculo matemático del Target
                 target = coefficient * (256 ** (exponent - 3))
                 
-                # Representación en binario (256 bits) para visualizar el espacio SHA-256
+                # THEORY COMMENT 2: For a hash to be smaller than the target, it mathematically requires a certain number of leading zeros.
+                # We calculate these leading zeros in the 256-bit binary representation to visually show the PoW difficulty.
                 target_bin = f"{target:0256b}"
                 leading_zeros = 256 - len(target_bin.lstrip('0'))
                 
